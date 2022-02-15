@@ -21,11 +21,11 @@
 				<form id="contact-form" action="dangnhap" method="POST"
 					class="tm-contact-form mx-auto">
 					<div class="form-group">
-						<input type="text" name="username" class="form-control rounded-0"
+						<input type="text" name="user" class="form-control rounded-0"
 							placeholder="Tên đăng nhập" required />
 					</div>
 					<div class="form-group">
-						<input type="password" name="password" class="form-control rounded-0"
+						<input type="password" name="pass" class="form-control rounded-0"
 							placeholder="Mật khẩu" required />
 					</div>
 					<div class="form-group tm-text-right">
