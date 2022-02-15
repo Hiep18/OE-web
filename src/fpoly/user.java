@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import DAO.UserDAO;
-import enity.Users;
-
 @WebServlet({ "/dangnhap", "/dangky", "/quenmatkhau", "/dangxuat" })
 public class user extends HttpServlet {
 	@Override
@@ -33,7 +30,6 @@ public class user extends HttpServlet {
 		}
 	}
 	private void doGetDangNhap(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		req.getRequestDispatcher("views/user/dangnhap.jsp").forward(req, resp);
 	}
 	@Override
@@ -50,26 +46,14 @@ public class user extends HttpServlet {
 		}
 	}
 	private void doPostDangNhap(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String method = req.getMethod();
-		if(method.equalsIgnoreCase("POST")) {
-		// TODO: ĐĂNG NHẬP
-			String id = req.getParameter("username");
-			String pw = req.getParameter("password");
-			try {
-			UserDAO dao = new UserDAO();
-			Users user = dao.findById(id);
-			if(!user.getPassword().equals(pw)) {
-			req.setAttribute("message", "Sai mật khẩu!");
-			}
-			else {
-			req.setAttribute("message", "Đăng nhập thành công!");
-			req.getSession().setAttribute("user", user);
-			resp.sendRedirect("/ASM/index");
-			}
-			} catch (Exception e) {
-			req.setAttribute("message", "Sai tên đăng nhập!");
-			resp.sendRedirect("/dangnhap");
-			}
+		String userdefault = "admin";
+		String passdefault = "123456";
+		String user = req.getParameter("user");
+		String pass = req.getParameter("pass");
+		if(user.equalsIgnoreCase(userdefault) && pass.equalsIgnoreCase(passdefault)) {
+			resp.sendRedirect("index.php");
+		}else {
+			resp.sendRedirect("dangnhap");
 		}
 	}
 	private void doGetDangKy(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
