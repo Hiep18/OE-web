@@ -34,4 +34,5 @@ public class TrangChu extends HttpServlet{
 	private void doGetLichSu(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getRequestDispatcher("views/user/lichsu.jsp").forward(req, resp);
 	}
+	
 }
