@@ -1,8 +1,6 @@
 package enity;
 
-import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
 
 /**
@@ -11,119 +9,67 @@ import java.util.List;
  */
 @Entity
 @Table(name="Users")
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
-public class User implements Serializable {
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@Column(name="Id")
-	private String id;
-
-	@Column(name="Adminn")
-	private boolean adminn;
-
-	@Column(name="Email")
-	private String email;
-
+public class User {
+    @Id
+	@Column(name="UserId")
+	String Id;
+	@Column(name="Password")
+	String Password;
 	@Column(name="Fullname")
-	private String fullname;
-
-	@Column(name="Passwordd")
-	private String passwordd;
-
-	//bi-directional many-to-one association to Favorite
-	@OneToMany(mappedBy="user")
-	private List<Favorite> favorites;
-
-	//bi-directional many-to-one association to Share
-	@OneToMany(mappedBy="user")
-	private List<Share> shares;
-
+	String Fullname;
+	@Column(name="Email")
+	String Email;
+	@Column(name="Admin")
+	boolean Admin= false;
+	
+	
+	
+	
 	public User() {
+		
 	}
+	
+	
+	
+	public User(String id, String password, String fullname, String email, boolean admin) {
+		Id = id;
+		Password = password;
+		Fullname = fullname;
+		Email = email;
+		Admin = admin;
+	}
+
+
 
 	public String getId() {
-		return this.id;
+		return Id;
 	}
-
 	public void setId(String id) {
-		this.id = id;
+		Id = id;
 	}
-
-	public boolean getAdminn() {
-		return this.adminn;
+	
+	public String getPassword() {
+		return Password;
 	}
-
-	public void setAdminn(boolean adminn) {
-		this.adminn = adminn;
+	public void setPassword(String password) {
+		Password = password;
 	}
-
-	public String getEmail() {
-		return this.email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public String getFullname() {
-		return this.fullname;
+		return Fullname;
 	}
-
 	public void setFullname(String fullname) {
-		this.fullname = fullname;
+		Fullname = fullname;
 	}
-
-	public String getPasswordd() {
-		return this.passwordd;
+	public String getEmail() {
+		return Email;
 	}
-
-	public void setPasswordd(String passwordd) {
-		this.passwordd = passwordd;
+	public void setEmail(String email) {
+		Email = email;
 	}
-
-	public List<Favorite> getFavorites() {
-		return this.favorites;
+	public boolean getAdmin() {
+		return Admin;
 	}
-
-	public void setFavorites(List<Favorite> favorites) {
-		this.favorites = favorites;
+	public void setAdmin(boolean admin) {
+		Admin = admin;
 	}
-
-	public Favorite addFavorite(Favorite favorite) {
-		getFavorites().add(favorite);
-		favorite.setUser(this);
-
-		return favorite;
-	}
-
-	public Favorite removeFavorite(Favorite favorite) {
-		getFavorites().remove(favorite);
-		favorite.setUser(null);
-
-		return favorite;
-	}
-
-	public List<Share> getShares() {
-		return this.shares;
-	}
-
-	public void setShares(List<Share> shares) {
-		this.shares = shares;
-	}
-
-	public Share addShare(Share share) {
-		getShares().add(share);
-		share.setUser(this);
-
-		return share;
-	}
-
-	public Share removeShare(Share share) {
-		getShares().remove(share);
-		share.setUser(null);
-
-		return share;
-	}
-
 }

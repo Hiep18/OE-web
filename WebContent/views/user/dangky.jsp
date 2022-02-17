@@ -18,19 +18,24 @@
 		<div class="row tm-mb-50">
 			<div class="col-lg-12 col-12 mb-5">
 				<h2 class="tm-text-primary mb-5">Đăng ký</h2>
+				<h3>${message}</h3>
 				<form id="contact-form" action="" method="POST"
 					class="tm-contact-form mx-auto">
 					<div class="form-group">
-						<input type="text" name="name" class="form-control rounded-0"
+						<input type="text" name="id" class="form-control rounded-0"
 							placeholder="Tên đăng nhập" required />
+					</div>
+					<div class="form-group">
+						<input type="text" name="email" class="form-control rounded-0"
+							placeholder="Email" required />
+					</div>
+					<div class="form-group">
+						<input type="text" name="fullname" class="form-control rounded-0"
+							placeholder="Tên người dùng" required />
 					</div>
 					<div class="form-group">
 						<input type="password" name="pass" class="form-control rounded-0"
 							placeholder="Mật khẩu" required />
-					</div>
-					<div class="form-group">
-						<input type="password" name="repass" class="form-control rounded-0"
-							placeholder="Nhập lại mật khẩu" required />
 					</div>
 					<div class="form-group tm-text-right">
 						<button type="submit" class="btn btn-primary">Đăng ký ngay</button>

@@ -30,8 +30,10 @@
 					</div>
 					<div class="form-group tm-text-right">
 						<button type="submit" class="btn btn-primary">Đăng nhập</button>
+						
 					</div>
 				</form>
+				<h3>${message}</h3>
 			</div>
 		</div>
 	</div>
