@@ -23,7 +23,6 @@ public class UserDao {
 			em.getTransaction().rollback();
 			System.out.println("Thêm mới thất bại!"+ e);
 		}
-		return entity; 
 	}
 	public void update( User entity) {
 		try { 
@@ -53,7 +52,7 @@ public class UserDao {
 		return entity;
 	}
 	public List<User> findAll() {
-		final protected String sqpl="Select u from Users u";
+		String sqpl = "Select u from Users u";
 		TypedQuery<User> query = em.createQuery(sqpl,User.class);
 		List<User> list = query.getResultList();
 		return list;
