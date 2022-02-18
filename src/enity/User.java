@@ -1,6 +1,8 @@
 package enity;
 
+import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -9,67 +11,119 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="Users")
-public class User {
-    @Id
-	@Column(name="UserId")
-	String Id;
-	@Column(name="Password")
-	String Password;
-	@Column(name="Fullname")
-	String Fullname;
-	@Column(name="Email")
-	String Email;
+@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+public class User implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name="UserID")
+	private String userID;
+
 	@Column(name="Admin")
-	boolean Admin= false;
-	
-	
-	
-	
+	private boolean admin;
+
+	@Column(name="Email")
+	private String email;
+
+	@Column(name="FullName")
+	private String fullName;
+
+	@Column(name="Password")
+	private String password;
+
+	//bi-directional many-to-one association to Favorite
+	@OneToMany(mappedBy="user")
+	private List<Favorite> favorites;
+
+	//bi-directional many-to-one association to Share
+	@OneToMany(mappedBy="user")
+	private List<Share> shares;
+
 	public User() {
-		
-	}
-	
-	
-	
-	public User(String id, String password, String fullname, String email, boolean admin) {
-		Id = id;
-		Password = password;
-		Fullname = fullname;
-		Email = email;
-		Admin = admin;
 	}
 
+	public String getUserID() {
+		return this.userID;
+	}
 
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
 
-	public String getId() {
-		return Id;
-	}
-	public void setId(String id) {
-		Id = id;
-	}
-	
-	public String getPassword() {
-		return Password;
-	}
-	public void setPassword(String password) {
-		Password = password;
-	}
-	public String getFullname() {
-		return Fullname;
-	}
-	public void setFullname(String fullname) {
-		Fullname = fullname;
-	}
-	public String getEmail() {
-		return Email;
-	}
-	public void setEmail(String email) {
-		Email = email;
-	}
 	public boolean getAdmin() {
-		return Admin;
+		return this.admin;
 	}
+
 	public void setAdmin(boolean admin) {
-		Admin = admin;
+		this.admin = admin;
 	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getFullName() {
+		return this.fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public List<Favorite> getFavorites() {
+		return this.favorites;
+	}
+
+	public void setFavorites(List<Favorite> favorites) {
+		this.favorites = favorites;
+	}
+
+	public Favorite addFavorite(Favorite favorite) {
+		getFavorites().add(favorite);
+		favorite.setUser(this);
+
+		return favorite;
+	}
+
+	public Favorite removeFavorite(Favorite favorite) {
+		getFavorites().remove(favorite);
+		favorite.setUser(null);
+
+		return favorite;
+	}
+
+	public List<Share> getShares() {
+		return this.shares;
+	}
+
+	public void setShares(List<Share> shares) {
+		this.shares = shares;
+	}
+
+	public Share addShare(Share share) {
+		getShares().add(share);
+		share.setUser(this);
+
+		return share;
+	}
+
+	public Share removeShare(Share share) {
+		getShares().remove(share);
+		share.setUser(null);
+
+		return share;
+	}
+
 }

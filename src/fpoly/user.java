@@ -53,22 +53,22 @@ public class user extends HttpServlet {
 	private void doPostDangNhap(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String method = req.getMethod();
 		if(method.equalsIgnoreCase("POST")) {
-		// TODO: ĐĂNG NHẬP
+		// TODO: Ä�Ä‚NG NHáº¬P
 			String id = req.getParameter("user");
 			String pw = req.getParameter("pass");
 			try {
 			UserDao dao = new UserDao();
 			User user = dao.findById(id);
 			if(!user.getPassword().equals(pw)) {
-			req.setAttribute("message", "Sai mật khẩu!");
+			req.setAttribute("message", "Sai máº­t kháº©u!");
 			}
 			else {
-			req.setAttribute("message", "Đăng nhập thành công!");
+			req.setAttribute("message", "Ä�Äƒng nháº­p thÃ nh cÃ´ng!");
 			req.getSession().setAttribute("user", user);
 			resp.sendRedirect("/ASM/index");
 			}
 			} catch (Exception e) {
-			req.setAttribute("message", "Sai tên đăng nhập!");
+			req.setAttribute("message", "Sai tÃªn Ä‘Äƒng nháº­p!");
 			resp.sendRedirect("/dangnhap");
 
 			}
@@ -92,15 +92,15 @@ public class user extends HttpServlet {
 			}else {
 				entity.setAdmin(false);
 			}
-			entity.setId(req.getParameter("id"));
-			entity.setFullname(req.getParameter("fullname"));
+			entity.setUserID(req.getParameter("id"));
+			entity.setFullName(req.getParameter("fullname"));
 			entity.setEmail(req.getParameter("email"));
 			entity.setPassword(req.getParameter("pass"));
 			dao.create(entity);
-			req.setAttribute("message","Thêm mới thành công!");
+			req.setAttribute("message","ThÃªm má»›i thÃ nh cÃ´ng!");
 			resp.sendRedirect("/ASM/dangnhap");
 		} catch (Exception e) {
-			req.setAttribute("message","Thêm mới thất bại!");
+			req.setAttribute("message","ThÃªm má»›i tháº¥t báº¡i!");
 			resp.sendRedirect("/dangky");
 		}
 	}

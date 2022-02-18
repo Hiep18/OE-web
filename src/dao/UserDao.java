@@ -7,12 +7,15 @@ import enity.User;
 import utils.JPAEntity;
 
 public class UserDao {
+	
 	private EntityManager em = JPAEntity.getEntityManager();
+	
 	@Override
 	protected void finalize() throws Throwable {
 		em.close();
 		super.finalize();
 	}
+	
 	public void create( User entity) {
 		try { 
 			em.getTransaction().begin(); 
@@ -56,6 +59,16 @@ public class UserDao {
 		TypedQuery<User> query = em.createQuery(sqpl,User.class);
 		List<User> list = query.getResultList();
 		return list;
+	}
+	
+	public User findByEmail(String email) {
+		String jpql ="select u from User u where u.email=:email";
+		
+			TypedQuery<User> query = em.createQuery(jpql,User.class);
+			query.setParameter("email",email);
+			return query.getSingleResult();
+		
+		
 	}
 	
 }
