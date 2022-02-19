@@ -2,7 +2,7 @@
 <%@ include file="/views/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <LINK REL="StyleSheet"
@@ -18,12 +18,9 @@
 		<div class="row tm-mb-50">
 			<div class="col-lg-12 col-12 mb-5">
 				<h2 class="tm-text-primary mb-5">Quên mật khẩu</h2>
-				<form id="contact-form" action="" method="POST"
+				<form id="contact-form" action="forgetpassword" method="POST"
 					class="tm-contact-form mx-auto">
-					<div class="form-group">
-						<input type="text" name="name" class="form-control rounded-0"
-							placeholder="Tên đăng nhập" required />
-					</div>
+					
 					<div class="form-group">
 						<input type="email" name="email" class="form-control rounded-0"
 							placeholder="Email" required />
