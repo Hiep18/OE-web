@@ -25,7 +25,7 @@
 							placeholder="Tên đăng nhập" required />
 					</div>
 					<div class="form-group">
-						<input type="text" name="password" class="form-control rounded-0"
+						<input type="password" name="password" class="form-control rounded-0"
 							placeholder="Mật khẩu mới" required />
 					</div>
 					<div class="form-group tm-text-right">

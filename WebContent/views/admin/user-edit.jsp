@@ -293,12 +293,12 @@
 						<!-- /.col -->
 					</div>
 					<div>
-			  	<!--		<c:url var="url" value="/admin/user-edit"/>
+		  			<c:url var="url" value="/admin/user-edit"/>
 						<form action="${url}/index">
 							  <div class="form-group row">
 							    <label for="inputEmail3" class="col-sm-2 col-form-label">User name:</label>
 							    <div class="col-sm-10">
-							      <input value="${form.id}" name="username" type="text" class="form-control" id="inputEmail3" placeholder="Username">
+							      <input value="${form.id}" name="id" type="text" class="form-control" id="inputEmail3" placeholder="Username">
 							    </div>
 							  </div>
 							  <div class="form-group row">
@@ -343,11 +343,11 @@
 								     	<button formaction="${url}/create"  class="btn btn-outline-secondary">Create</button>
 									    <button formaction="${url}/update"  class="btn btn-outline-secondary">Update</button>
 									    <button formaction="${url}/delete"  class="btn btn-outline-secondary">Delete</button>
-									    <a class="btn btn-primary" href="${url}" role="button">Reset</a>
+									    <a class="btn btn-primary" href="${url}.jsp" role="button">Reset</a>
 								    </div>
 								  </div>
-							</form> -->
-						<c:url var="url" value="/admin/user-edit"/>
+							</form> 
+					<!--  	<c:url var="url" value="/admin/user-edit"/>
 						<form action="${url}/index">
 							<input value="${form.id}" name="id" type="text" placeholder="Username" name="username"> <br>
 						    <input value="${form.password}" type="password" placeholder="Password" name="password"> <br>
@@ -361,7 +361,7 @@
 						    <button formaction="${url}/update"  class="btn btn-outline-secondary">Update</button>
 						    <button formaction="${url}/delete"  class="btn btn-outline-secondary">Delete</button>
 						    <a class="btn btn-primary" href="${url}" role="button">Reset</a>
-						</form> 
+						</form> -->
 					</div>
 					<!-- /.row -->
 				</div>

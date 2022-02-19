@@ -258,12 +258,13 @@
 									Người dùng <i class="right fas fa-angle-left"></i>
 								</p>
 						</a>
+							<c:url var="url" value="/admin" />
 							<ul class="nav nav-treeview">
-								<li class="nav-item"><a href="./user-overview.jsp"
+								<li class="nav-item"><a href="${url}/user-overview.jsp"
 									class="nav-link active"> <i class="far fa-circle nav-icon"></i>
 										<p>Quản lí</p>
 								</a></li>
-								<li class="nav-item"><a href="./user-edit.jsp"
+								<li class="nav-item"><a href="${url}/user-edit.jsp"
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
 										<p>Chỉnh sửa</p>
 								</a></li>
@@ -312,7 +313,7 @@
 							      <th>${item.fullname}</th>
 					              <th>${item.email}</th>
 					              <th>${item.admin?'Admin':'User'}</th>
-					              <th><a href="user-overview/edit/${item.id}">edit</a> </th>
+					              <th><a href="${url}/user-overview/edit/${item.id}">edit</a> </th>
 							    </tr>
 							     </c:forEach>
 						  </tbody>
