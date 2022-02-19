@@ -11,7 +11,7 @@ import dao.UserDao;
 import enity.User;
 import utils.mailUntils;
 
-
+ 
 @WebServlet({"/forgetpassword","/confirmcapcha","/confirmpassword"})
 public class forgetpassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
