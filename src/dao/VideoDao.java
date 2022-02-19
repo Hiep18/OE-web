@@ -58,7 +58,7 @@ public class VideoDao {
 	public List<Video> get(){
 		em.getTransaction().begin();
 		try {
-			String jpql = "SELECT o From Favorite o";
+			String jpql = "SELECT o From Video o";
 			TypedQuery<Video> query = em.createQuery(jpql, Video.class);
 			List<Video> list = query.getResultList();
 			em.getTransaction().commit();

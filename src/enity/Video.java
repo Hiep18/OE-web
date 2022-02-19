@@ -17,16 +17,16 @@ public class Video implements Serializable {
 	@Column(name="Active")
 	private boolean active;
 
-	@Column(name="Descriptionn")
-	private String descriptionn;
+	@Column(name="Description")
+	private String description;
 
 	private String img;
 
 	@Column(name="Poster")
 	private String poster;
 
-	@Column(name="Titile")
-	private String titile;
+	@Column(name="Title")
+	private String title;
 
 	@Column(name="Views")
 	private int views;
@@ -50,12 +50,12 @@ public class Video implements Serializable {
 		this.active = active;
 	}
 
-	public String getDescriptionn() {
-		return this.descriptionn;
+	public String getDescription() {
+		return this.description;
 	}
 
-	public void setDescriptionn(String descriptionn) {
-		this.descriptionn = descriptionn;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getImg() {
@@ -64,7 +64,7 @@ public class Video implements Serializable {
 
 	public void setImg(String img) {
 		this.img = img;
-	}
+	} 
 
 	public String getPoster() {
 		return this.poster;
@@ -74,12 +74,12 @@ public class Video implements Serializable {
 		this.poster = poster;
 	}
 
-	public String getTitile() {
-		return this.titile;
+	public String getTitle() {
+		return this.title;
 	}
 
-	public void setTitile(String titile) {
-		this.titile = titile;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public int getViews() {
@@ -94,10 +94,10 @@ public class Video implements Serializable {
 		super();
 		this.id = id;
 		this.active = active;
-		this.descriptionn = descriptionn;
+		this.description = description;
 		this.img = img;
 		this.poster = poster;
-		this.titile = titile;
+		this.title = title;
 		this.views = views;
 	}
 }
