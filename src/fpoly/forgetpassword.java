@@ -11,7 +11,7 @@ import dao.UserDao;
 import enity.User;
 import utils.mailUntils;
 
-
+ 
 @WebServlet({"/forgetpassword","/confirmcapcha","/confirmpassword"})
 public class forgetpassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -55,7 +55,7 @@ public class forgetpassword extends HttpServlet {
 			}
 		} else if (url.contains("/confirmpassword")) {
 			String pass = request.getParameter("pass");
-			System.out.println(pass);
+			
 			user.setPassword(pass);
 			try {
 				userDao.create(user);
