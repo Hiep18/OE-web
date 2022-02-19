@@ -16,8 +16,9 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="UserId")
-	private String id;
+
+	@Column(name="UserID")
+	private String userID;
 
 	@Column(name="Admin")
 	private boolean admin;
@@ -25,8 +26,8 @@ public class User implements Serializable {
 	@Column(name="Email")
 	private String email;
 
-	@Column(name="Fullname")
-	private String fullname;
+	@Column(name="FullName")
+	private String fullName;
 
 	@Column(name="Password")
 	private String password;
@@ -42,20 +43,21 @@ public class User implements Serializable {
 	public User() {
 	}
 
-	public String getId() {
-		return this.id;
+	public String getUserID() {
+		return this.userID;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setUserID(String userID) {
+		this.userID = userID;
 	}
 
 	public boolean getAdmin() {
 		return this.admin;
 	}
 
-	public void setAdmin(boolean adminn) {
-		this.admin = adminn;
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 
 	public String getEmail() {
@@ -66,12 +68,12 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-	public String getFullname() {
-		return this.fullname;
+	public String getFullName() {
+		return this.fullName;
 	}
 
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	public String getPassword() {

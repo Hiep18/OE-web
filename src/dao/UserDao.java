@@ -1,94 +1,74 @@
 package dao;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-
 import enity.User;
+import utils.JPAEntity;
 
 public class UserDao {
-	EntityManagerFactory emf;
-	EntityManager em;
-	public UserDao() {
-		emf = Persistence.createEntityManagerFactory("OE-web");
-		em = emf.createEntityManager();
+	
+	private EntityManager em = JPAEntity.getEntityManager();
+	
+	@Override
+	protected void finalize() throws Throwable {
+		em.close();
+		super.finalize();
 	}
-	public List<User> get(){
-		em.getTransaction().begin();
-		try {
-			String jpql = "SELECT o From User o";
-			TypedQuery<User> query = em.createQuery(jpql, User.class);
-			List<User> list = query.getResultList();
+	
+	public void create( User entity) {
+		try { 
+			em.getTransaction().begin(); 
+			em.persist(entity);
 			em.getTransaction().commit();
-			return list;
+			System.out.println("Thêm mới thành công!");
+		} catch (Exception e) { 
+			em.getTransaction().rollback();
+			System.out.println("Thêm mới thất bại!"+ e);
+		}
+	}
+	public void update( User entity) {
+		try { 
+			em.getTransaction().begin(); 
+			em.merge(entity);
+			em.getTransaction().commit();
+			System.out.println("Cập nhật thành công!");
+		} catch (Exception e) { 
+			em.getTransaction().rollback(); 
+			System.out.println("Cập nhật thất bại!");
+		}
+	}
+	public void remove( String id) {
+		User entity = em.find(User.class, id);
+		try {
+			em.getTransaction().begin();
+			em.remove(entity);
+			em.getTransaction().commit();
+			System.out.println("Xóa thành công !");
 		} catch (Exception e) {
 			em.getTransaction().rollback();
-			e.printStackTrace();
+			System.out.println("Xóa thất bại !"+ e);
 		}
-		return null;
 	}
-	public User get(String id){
-		em.getTransaction().begin();
-		try {
-			/*String jpql = "SELECT u From User u WHERE u.id = '"+id+"'";
-			TypedQuery<User> query = em.createQuery(jpql, User.class);
-			User user  = query.getSingleResult();*/
-			User user = this.doGet(id);
-			em.getTransaction().commit();
-			return user ;
-		} catch (Exception e) {
-			em.getTransaction().rollback();
-			e.printStackTrace();
-		}
-		return null;
+	public User findById( String id) {
+		User entity = em.find(User.class, id);
+		return entity;
 	}
-	private User doGet(String id) {
-		String jpql = "SELECT o From User o WHERE o.id = '"+id+"'";
-		TypedQuery<User> query = em.createQuery(jpql, User.class);
-		User user  = query.getSingleResult();
+	public List<User> findAll() {
+		String sqpl = "Select u from Users u";
+		TypedQuery<User> query = em.createQuery(sqpl,User.class);
+		List<User> list = query.getResultList();
+		return list;
+	}
+	
+	public User findByEmail(String email) {
+		String jpql ="select u from User u where u.email=:email";
 		
-		return user;
-	}
-	public boolean insert(User u) { 
-		em.getTransaction().begin();
-		try {
-			em.persist(u);
-			em.getTransaction().commit();
-			return true;
-		} catch (Exception e) {
-			em.getTransaction().rollback();
-			e.printStackTrace();
-		}
+			TypedQuery<User> query = em.createQuery(jpql,User.class);
+			query.setParameter("email",email);
+			return query.getSingleResult();
 		
-		return false;
-	}
-	public boolean update(User u) {
-		em.getTransaction().begin();
-		try {
-			em.merge(u);
-			em.getTransaction().commit();
-			return true;
-		} catch (Exception e) {
-			em.getTransaction().rollback();
-			e.printStackTrace();
-		}
-		return false;
-	}
-	public User delete(String id) {
-		em.getTransaction().begin();
-		try {
-			User u = this.doGet(id);
-			em.remove(u);
-			em.getTransaction().commit();
-			return u;
-		} catch (Exception e) {
-			em.getTransaction().rollback();
-			e.printStackTrace();
-		}
-		return null;
+		
 	}
 	
 }
