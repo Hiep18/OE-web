@@ -55,7 +55,7 @@ public class forgetpassword extends HttpServlet {
 			}
 		} else if (url.contains("/confirmpassword")) {
 			String pass = request.getParameter("pass");
-			System.out.println(pass);
+			
 			user.setPassword(pass);
 			try {
 				userDao.create(user);
