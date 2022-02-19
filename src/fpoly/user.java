@@ -8,12 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 import dao.UserDao;
 import enity.User;
 
 @WebServlet({ "/dangnhap", "/dangky", "/quenmatkhau", "/dangxuat","/doimatkhau" })
-
 public class user extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -53,7 +51,6 @@ public class user extends HttpServlet {
 			case "/doimatkhau":
 				doPostDoiMatKhau(req, resp);
 				break;
-
 		}
 	}
 	private void doPostDangNhap(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -139,8 +136,6 @@ public class user extends HttpServlet {
 			System.out.println("Dổi mật khẩu thành công");
 		}else {
 			System.out.println("Đổi mật khẩu thất bại");
-		}
-		
-		
+		}	
 	}
 }
