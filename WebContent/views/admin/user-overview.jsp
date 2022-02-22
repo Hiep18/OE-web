@@ -308,40 +308,16 @@
 						  <tbody>
 						  		<c:forEach var="item" items="${items}">
 							    <tr>
-							      <th scope="row">${item.id}</th>
+							      <th scope="row">${item.userID}</th>
 							      <td>${item.password}</td>
-							      <th>${item.fullname}</th>
+							      <th>${item.fullName}</th>
 					              <th>${item.email}</th>
 					              <th>${item.admin?'Admin':'User'}</th>
-					              <th><a href="${url}/user-overview/edit/${item.id}">edit</a> </th>
+					              <th><a href="${url}/user-overview/edit/${item.userID}">edit</a> </th>
 							    </tr>
 							     </c:forEach>
 						  </tbody>
 						</table>
-				<!-- 		<table>
-							<thead>
-								<tr>
-									<th>User name </th>
-						    		<th>Password </th>
-						    		<th>Fullname </th>
-						    		<th>Email </th>
-						    		<th>Role </th>
-						    		<th> </th>								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var="item" items="${items}">
-							    	<tr>
-							            <th>${item.id}</th>
-							            <th>${item.password}</th>
-							            <th>${item.fullname}</th>
-							            <th>${item.email}</th>
-							            <th>${item.admin?'Admin':'User'}</th>
-							            <th><a href="user-overview/edit/${item.id}">edit</a> </th>
-							        </tr>
-							    </c:forEach>
-							</tbody>
-							
-						</table>  -->
 					</div>
 					<!-- /.row -->
 				</div>

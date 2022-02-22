@@ -55,7 +55,7 @@ public class UserDao {
 		return entity;
 	}
 	public List<User> findAll() {
-		String sqpl = "Select u from Users u";
+		String sqpl = "Select u from User u";
 		TypedQuery<User> query = em.createQuery(sqpl,User.class);
 		List<User> list = query.getResultList();
 		return list;

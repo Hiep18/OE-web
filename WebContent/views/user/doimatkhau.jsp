@@ -28,6 +28,9 @@
 						<input type="password" name="password" class="form-control rounded-0"
 							placeholder="Mật khẩu mới" required />
 					</div>
+					<div class="form-group">
+						<label>${msg}</label>
+					</div>
 					<div class="form-group tm-text-right">
 						<button type="submit" class="btn btn-primary">Dổi mật khẩu</button>
 					</div>

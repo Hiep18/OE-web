@@ -298,25 +298,25 @@
 							  <div class="form-group row">
 							    <label for="inputEmail3" class="col-sm-2 col-form-label">User name:</label>
 							    <div class="col-sm-10">
-							      <input value="${form.id}" name="id" type="text" class="form-control" id="inputEmail3" placeholder="Username">
+							      <input value="${form.userID}" name="userID" type="text" class="form-control" id="id" placeholder="Username">
 							    </div>
 							  </div>
 							  <div class="form-group row">
 							    <label for="inputPassword3" class="col-sm-2 col-form-label">Password:</label>
 							    <div class="col-sm-10">
-							      <input value="${form.password}" name="password" type="password" class="form-control" id="inputPassword3" placeholder="Password">
+							      <input value="${form.password}" name="password" type="password" class="form-control" id="password" placeholder="Password">
 							    </div>
 							  </div>
 							  <div class="form-group row">
 							    <label for="inputEmail3" class="col-sm-2 col-form-label">Full name:</label>
 							    <div class="col-sm-10">
-							      <input value="${form.fullname}" name="fullname" type="text" class="form-control" id="inputEmail3" placeholder="Full name">
+							      <input value="${form.fullName}" name="fullName" type="text" class="form-control" id="fullName" placeholder="Full name">
 							    </div>
 							  </div>
 							  <div class="form-group row">
 							    <label for="inputEmail3" class="col-sm-2 col-form-label">Email:</label>
 							    <div class="col-sm-10">
-							      <input value="${form.email}" name="email" type="textz" class="form-control" id="inputEmail3" placeholder="Email">
+							      <input value="${form.email}" name="email" type="email" class="form-control" id="email" placeholder="Email">
 							    </div>
 							  </div>
 							  <fieldset class="form-group">
@@ -335,33 +335,21 @@
 							            User
 							          </label>
 							        </div>
+									<div id="tb">
+										${msg}
+									</div>
 							      </div>
 							    </div>
 							  </fieldset>
 								  <div class="form-group row">
 								    <div class="col-sm-10">
-								     	<button formaction="${url}/create"  class="btn btn-outline-secondary">Create</button>
-									    <button formaction="${url}/update"  class="btn btn-outline-secondary">Update</button>
-									    <button formaction="${url}/delete"  class="btn btn-outline-secondary">Delete</button>
+								     	<button onclick="return kiemTra()" formaction="${url}/create"  class="btn btn-outline-secondary">Create</button>
+									    <button onclick="return kiemTra()" formaction="${url}/update"  class="btn btn-outline-secondary">Update</button>
+									    <button onclick="return kiemTra()" formaction="${url}/delete"  class="btn btn-outline-secondary">Delete</button>
 									    <a class="btn btn-primary" href="${url}.jsp" role="button">Reset</a>
 								    </div>
 								  </div>
 							</form> 
-					<!--  	<c:url var="url" value="/admin/user-edit"/>
-						<form action="${url}/index">
-							<input value="${form.id}" name="id" type="text" placeholder="Username" name="username"> <br>
-						    <input value="${form.password}" type="password" placeholder="Password" name="password"> <br>
-						    <input value="${form.fullname}" type="text" placeholder="Fullname" name="fullname"> <br>
-						    <input value="${form.email}" type="text" placeholder="Email Address" name="email"> <br>
-						    <input ${form.admin?'checked':''} type="radio" name="rdoRoll" value="true"> Admin
-						    <input ${form.admin?'':'checked'} type="radio" name="rdoRoll" value="false"> User <br>
-						    <label>${msg}</label>
-						    <hr>
-						    <button formaction="${url}/create"  class="btn btn-outline-secondary">Create</button>
-						    <button formaction="${url}/update"  class="btn btn-outline-secondary">Update</button>
-						    <button formaction="${url}/delete"  class="btn btn-outline-secondary">Delete</button>
-						    <a class="btn btn-primary" href="${url}" role="button">Reset</a>
-						</form> -->
 					</div>
 					<!-- /.row -->
 				</div>
@@ -440,5 +428,24 @@
 	<script src="<c:url value='/views/admin/dist/js/demo.js'/>"></script>
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 	<script src="<c:url value='/views/admin/dist/js/pages/dashboard.js'/>"></script>
+	<script>
+		document.getElementById("tb").style.display="none";
+		function kiemTra(){
+			var id = document.getElementById("id").value;
+			var pw = document.getElementById("password").value;
+			var fn = document.getElementById("fullname").value;
+			var email = document.getElementById("email").value;
+			document.getElementById("tb").innerHTML="";
+			if(id==""){
+				document.getElementById("tb").innerHTML="<p>Vui lòng nhập Username</p>"
+			}else if(pw==""){
+				document.getElementById("tb").innerHTML="<p>Vui lòng nhập Password</p>"
+			}else if(fn==""){
+				document.getElementById("tb").innerHTML="<p>Vui lòng nhập Fullname</p>"
+			}else if(email==""){
+				document.getElementById("tb").innerHTML="<p>Vui lòng nhập Email</p>"
+			}
+		}
+	</script>
 </body>
 </html>
