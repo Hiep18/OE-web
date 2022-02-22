@@ -129,13 +129,13 @@ public class user extends HttpServlet {
 		String passWord = req.getParameter("password");
 		UserDao uDao = new UserDao();
 		User user = new User();
-		user = uDao.get(userName);
-		if(userName.contains(user.getId())) {
+		user = uDao.findById(userName);
+		if(userName.contains(user.getUserID())) {
 			user.setPassword(passWord);
 			uDao.update(user);
-			System.out.println("Dổi mật khẩu thành công");
+			req.setAttribute("msg", "Đổi mật khẩu thành công");
 		}else {
-			System.out.println("Đổi mật khẩu thất bại");
+			req.setAttribute("msg", "Đổi mật khẩu thất bại");
 		}	
 	}
 }
