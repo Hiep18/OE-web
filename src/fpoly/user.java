@@ -32,6 +32,7 @@ public class user extends HttpServlet {
 			case "/dangxuat":
 				doGetDangXuat(req, resp);
 				break;
+				
 		}
 	}
 	private void doGetDangNhap(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -123,19 +124,51 @@ public class user extends HttpServlet {
 	}
 	private void doGetDoiMatKhau(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getRequestDispatcher("views/user/doimatkhau.jsp").forward(req, resp);
+		
 	}
 	private void doPostDoiMatKhau(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String userName = req.getParameter("username");
-		String passWord = req.getParameter("password");
+		String currentPW = req.getParameter("curent_password");
+		String newPW1 = req.getParameter("new_password1");
+		String newPW2 = req.getParameter("new_password2");
 		UserDao uDao = new UserDao();
 		User user = new User();
 		user = uDao.findById(userName);
-		if(userName.contains(user.getUserID())) {
-			user.setPassword(passWord);
-			uDao.update(user);
-			req.setAttribute("msg", "Đổi mật khẩu thành công");
-		}else {
-			req.setAttribute("msg", "Đổi mật khẩu thất bại");
-		}	
+		String method = req.getMethod();
+		if(method.equals("POST")) {
+			if(check(req, resp) ) {
+				user.setPassword(newPW1);
+				uDao.update(user);
+				req.setAttribute("msg", "Đổi mật khẩu thành công");	
+			}
+			
+		}
+		req.getRequestDispatcher("views/user/doimatkhau.jsp").forward(req, resp);
+		
+	}
+	
+	private boolean check(HttpServletRequest req, HttpServletResponse resp)   throws ServletException, IOException{
+		String userName = req.getParameter("username");
+		String currentPW = req.getParameter("curent_password");
+		String newPW1 = req.getParameter("new_password1");
+		String newPW2 = req.getParameter("new_password2");
+		UserDao uDao = new UserDao();
+		User user = new User();
+		user = uDao.findById(userName);
+		if(user==null) {
+			req.setAttribute("msg", "Tài khoản không đúng");
+			return false;
+		}else if(!currentPW.contains(user.getPassword())) {
+			req.setAttribute("msg", "Mật khẩu không đúng");
+			return false;
+		}else if(Integer.parseInt(newPW1)<6) {
+			req.setAttribute("msg", "Mật khẩu phải nhiều hơn 6 kí tự");
+			return false;
+		}else if(!newPW1.equals(newPW2)) {
+			req.setAttribute("msg", "Mật khẩu không trùng khớp");
+			return false;
+		}
+		
+		return true;
 	}
 }
