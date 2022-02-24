@@ -258,12 +258,13 @@
 									Người dùng <i class="right fas fa-angle-left"></i>
 								</p>
 						</a>
+							<c:url var="uri" value="/admin"/>
 							<ul class="nav nav-treeview">
-								<li class="nav-item"><a href="./user-overview.jsp"
+								<li class="nav-item"><a href="${uri}/user-overview.jsp"
 									class="nav-link active"> <i class="far fa-circle nav-icon"></i>
 										<p>Quản lí</p>
 								</a></li>
-								<li class="nav-item"><a href="./user-edit.jsp"
+								<li class="nav-item"><a href="${uri}/user-edit.jsp"
 									class="nav-link"> <i class="far fa-circle nav-icon"></i>
 										<p>Chỉnh sửa</p>
 								</a></li>
@@ -282,7 +283,7 @@
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0">Trang chủ</h1>
+							<h1 class="m-0">Edit user</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
@@ -324,20 +325,20 @@
 							      <legend class="col-form-label col-sm-2 pt-0">Role</legend>
 							      <div class="col-sm-10">
 							        <div class="form-check">
-							          <input ${form.admin?'checked':''} name="admin" class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+							          <input ${form.admin?'checked':''} name="admin" class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="true" checked>
 							          <label class="form-check-label" for="gridRadios1">
 							            Admin
 							          </label>
 							        </div>
 							        <div class="form-check">
-							          <input ${form.admin?'':'checked'} name="admin" class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+							          <input ${form.admin?'':'checked'} name="admin" class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="false">
 							          <label class="form-check-label" for="gridRadios2">
 							            User
 							          </label>
 							        </div>
-									<div id="tb">
-										${msg}
-									</div>
+									<div class="form-check">
+							          	<h4>${msg}</h4>
+							        </div>
 							      </div>
 							    </div>
 							  </fieldset>
@@ -428,24 +429,6 @@
 	<script src="<c:url value='/views/admin/dist/js/demo.js'/>"></script>
 	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 	<script src="<c:url value='/views/admin/dist/js/pages/dashboard.js'/>"></script>
-	<script>
-		document.getElementById("tb").style.display="none";
-		function kiemTra(){
-			var id = document.getElementById("id").value;
-			var pw = document.getElementById("password").value;
-			var fn = document.getElementById("fullname").value;
-			var email = document.getElementById("email").value;
-			document.getElementById("tb").innerHTML="";
-			if(id==""){
-				document.getElementById("tb").innerHTML="<p>Vui lòng nhập Username</p>"
-			}else if(pw==""){
-				document.getElementById("tb").innerHTML="<p>Vui lòng nhập Password</p>"
-			}else if(fn==""){
-				document.getElementById("tb").innerHTML="<p>Vui lòng nhập Fullname</p>"
-			}else if(email==""){
-				document.getElementById("tb").innerHTML="<p>Vui lòng nhập Email</p>"
-			}
-		}
-	</script>
+
 </body>
 </html>

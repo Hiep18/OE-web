@@ -25,11 +25,19 @@
 							placeholder="Tên đăng nhập" required />
 					</div>
 					<div class="form-group">
-						<input type="password" name="password" class="form-control rounded-0"
+						<input type="password" name="curent_password" class="form-control rounded-0"
+							placeholder="Mật khẩu củ" required />
+					</div>
+					<div class="form-group">
+						<input type="password" name="new_password1" class="form-control rounded-0"
 							placeholder="Mật khẩu mới" required />
 					</div>
 					<div class="form-group">
-						<label>${msg}</label>
+						<input type="password" name="new_password2" class="form-control rounded-0"
+							placeholder="Nhập lại mật khẩu" required />
+					</div>
+					<div class="form-group">
+						<h5>${msg}</h5>
 					</div>
 					<div class="form-group tm-text-right">
 						<button type="submit" class="btn btn-primary">Dổi mật khẩu</button>
